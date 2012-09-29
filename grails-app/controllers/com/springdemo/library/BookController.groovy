@@ -1,12 +1,20 @@
 package com.springdemo.library
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.beans.factory.annotation.Autowired
 
 class BookController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def bookService
+
+    @Autowired
+    public MyLogger logger
+
+    def beforeInterceptor = {
+        logger.info("Accessing URL: ${actionUri}")
+    }
 
     def index() {
         redirect(action: "list", params: params)
