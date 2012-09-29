@@ -1,3 +1,9 @@
+.classpath
+.project
+*.swp
+*.iml
+*.ipr
+test/
 *.iws
 *Db.properties
 *Db.script
