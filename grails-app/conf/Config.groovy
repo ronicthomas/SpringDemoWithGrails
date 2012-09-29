@@ -91,3 +91,23 @@ log4j = {
 
     info 'grails.app'
 }
+
+
+springcache {
+    defaults {
+        // set default cache properties that will apply to all caches that do not override them
+        eternal = false
+        diskPersistent = false
+    }
+    caches {
+        bookCache {
+            eternal = false
+            // timeToLiveSeconds=10
+            diskPersistent = false
+            memoryStoreEvictionPolicy = "LRU"
+            timeToLive = 20
+            overflowToDisk = false
+            maxElementsInMemory=2
+        }
+    }
+}

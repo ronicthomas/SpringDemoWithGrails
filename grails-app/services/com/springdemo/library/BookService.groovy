@@ -1,6 +1,7 @@
 package com.springdemo.library
 
 import org.springframework.stereotype.Component
+import grails.plugin.springcache.annotations.Cacheable
 
 @Component
 class BookService {
@@ -12,5 +13,11 @@ class BookService {
 
         book.save()
 
+    }
+
+    @Cacheable("bookCache")
+    List listBooks(params) {
+        println "In cached folder"
+        return Book.list(params)
     }
 }
